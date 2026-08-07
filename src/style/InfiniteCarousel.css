@@ -1,0 +1,250 @@
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Base layout for the blur overlays */
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 220px; /* Width of the blur zone */
+  z-index: 2;
+  pointer-events: none;
+
+  /* Apply the hardware-accelerated blur effect to anything underneath */
+  backdrop-filter: blur(1rem);
+}
+
+/* 
+  Left Side Blur: 
+  Fades the blur effect smoothly from 100% strength at the edge to 0% strength inside.
+*/
+.overlay-left {
+  left: 0;
+  -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+  mask-image: linear-gradient(to right, black 0%, transparent 100%);
+}
+
+/* 
+  Right Side Blur: 
+  Fades the blur effect smoothly from 0% strength inside to 100% strength at the edge.
+*/
+.overlay-right {
+  right: 0;
+  -webkit-mask-image: linear-gradient(to left, black 0%, transparent 100%);
+  mask-image: linear-gradient(to left, black 0%, transparent 100%);
+}
+
+/* Standard structure for your loop container */
+.carousel-container {
+  overflow: hidden;
+  width: 90%;
+  padding: 20px 0;
+  display: flex;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: seamlessScroll 25s linear infinite;
+  text-align: center;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+.carousel-item {
+  flex-shrink: 0;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-image {
+  width: 200px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  pointer-events: none;
+  display: block;
+}
+
+@keyframes seamlessScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--scroll-distance, 50%)));
+  }
+}
+
+.carousel-container-skill {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+}
+
+.carousel-track-skill {
+  display: flex;
+  width: max-content;
+  animation: seamlessScroll 25s linear infinite;
+  text-align: center;
+}
+
+.carousel-track-skill:hover {
+  animation-play-state: paused;
+}
+
+.carousel-item-skill {
+  flex-shrink: 0;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-image-skill {
+  width: 200px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  pointer-events: none;
+  display: block;
+}
+
+/* @keyframes move-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--scroll-distance, 50%)));
+  }
+}
+@keyframes move-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--scroll-distance, 0)));
+  }
+} */
+
+@keyframes move-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Fix for the Left-to-Right movement */
+@keyframes move-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.direction-right {
+  animation-name: move-right;
+}
+
+.direction-left {
+  animation-name: move-left;
+}
+
+/* .carousel-container::before ,.carousel-container::after{
+    background:linear-gradient(to right , rgba(1,1,1,1) 0% ,rgba(9,9,9,0.1) 100%);
+    background-color: #130f40;
+  background-image: -webkit-linear-gradient(200deg, #130f40 0%, #000000 74%);
+  background-image: linear-gradient(29deg, #130f40, #000 74%);
+    content: '';
+    height: 100%;
+    z-index: 2;
+    width: 10%;
+    position: absolute;
+}
+
+
+.carousel-container::before{
+    left: 0;
+    top: 0;
+}
+.carousel-container::after{
+    background-color: rgba(19, 15, 64, 1)  ;
+    opacity:.8;
+    right: 0;
+    top: 0;
+    transform: rotate(180deg);
+} */
+
+/* Darkened backdrop that covers the form area while loading */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.3px);
+  -webkit-backdrop-filter: blur(3.3px);
+  border: 1px solid rgba(179, 172, 172, 0.34);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.form-container {
+  position: relative;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+/* The spinning circle itself */
+.loading-circle {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3; /* Light grey background border */
+  border-top: 4px solid #130f40; /* Blue active spinning part */
+  border-radius: 50%; /* Makes it a circle */
+  animation: spin 1s linear infinite; /* Loops the rotation */
+}
+
+/* Animation rule for the spin effect */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Form layout basics */
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
