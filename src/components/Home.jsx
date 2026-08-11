@@ -22,7 +22,7 @@ const Home = () => {
         
       </section> */}
 
-      <section className="relative pt-[150px] pb-[100px] section_2">
+      <section className="relative pt-[100px] pb-[100px] section_2">
         <div className="flex flex-wrap xl:mx-[4rem] lg:mx-[3.5rem] md:mx-[4rem] justify-center items-center mb-[100px]">
           <div className="">
             <img
