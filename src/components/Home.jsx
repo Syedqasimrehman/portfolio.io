@@ -35,10 +35,10 @@ const Home = () => {
           </div>
           <div className="mx-3">
             <h2 className="h2 text-transparent bg-clip-text bg-gradient-to-r from-gray-200">
-              I&apos;m Front-End Developer.
+              I&apos;m a FullStack Developer.
             </h2>
             <p className="p body-2 ">
-              I&apos;m Front-End web Developer with 3 years of experience.
+              I&apos;m a FullStack Developer with more than 3 years of experience.
             </p>
             <div className="mt-5">
               <Button className="bg-lime-500 text-n-8 py-3 cursor-pointer transition-all border border-lime-500  hover:bg-n-8 hover:text-white ">
