@@ -38,7 +38,7 @@ const Home = () => {
               I&apos;m a FullStack Developer.
             </h2>
             <p className="p body-2 ">
-              I&apos;m a FullStack Developer with more than 3 years of experience.
+              I&apos;m a FullStack Developer with more than 3 years of experience. I work on production websites and apps using different stacks.
             </p>
             <div className="mt-5">
               <Button className="bg-lime-500 text-n-8 py-3 cursor-pointer transition-all border border-lime-500  hover:bg-n-8 hover:text-white ">
