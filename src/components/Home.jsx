@@ -37,7 +37,7 @@ const Home = () => {
             <h2 className="h2 text-transparent bg-clip-text bg-gradient-to-r from-gray-200">
               I&apos;m a FullStack Developer.
             </h2>
-            <p className="p body-2 ">
+            <p className="p body-2 flex-warp">
               I&apos;m a FullStack Developer with more than 3 years of experience. I work on production websites and apps using different stacks.
             </p>
             <div className="mt-5">
