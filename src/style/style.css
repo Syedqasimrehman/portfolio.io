@@ -14,11 +14,11 @@
   background-image: linear-gradient(245deg, #130f40, #000 74%);
 }
 
-.background_col{
+/* .background_col{
   background-color: #130f40;
   background-image: -webkit-linear-gradient(200deg, #130f40 0%, #000000 74%);
   background-image: linear-gradient(245deg, #130f40, #000 74%); 
-}
+} */
 
 .image-gallery {
   display: flex;
@@ -127,4 +127,9 @@
     grid-template-columns: repeat(1, 1fr); 
     /* Or simply: grid-template-columns: 1fr; */
   }
+  .background_col{
+  background-color: #130f40;
+  background-image: -webkit-linear-gradient(200deg, #130f40 0%, #000000 74%);
+  background-image: linear-gradient(245deg, #130f40, #000 74%); 
+}
 }

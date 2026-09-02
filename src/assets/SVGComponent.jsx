@@ -1,13 +1,11 @@
-import React from 'react';
-
-const SVGComponent = (props ,{width}) => (
+const SVGComponent = ({ width, height, className, ...rest }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1000 500"
     width={width}
-    height="100%"
-    className="group transition-colors duration-300"
-    {...props}
+    height={height}
+    className={`group transition-colors duration-300 ${className || ""}`}
+    {...rest}
   >
     <defs>
       <pattern

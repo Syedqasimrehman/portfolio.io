@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { navigation, socialmedia } from "../constants";
 import { HamburgerMenu } from "./design/HamBargar";
 import { useNav } from "../context/NavContext"; 
@@ -32,7 +32,7 @@ const Header = () => {
 
   return (
     <div
-      className={`sticky top-0 w-full p-2 z-50 transition-all duration-300 ease-in-out ${
+      className={`sticky top-0 w-full p-4 z-50 transition-all duration-300 ease-in-out ${
         openNavigation
           ? "bg-slate-900"
           : isScroll
@@ -44,9 +44,7 @@ const Header = () => {
         <div className="z-20">
           <Link to="/" onClick={closeNavigation}>
             <SVGComponent
-              className=" hover:fill-lime-400 transition-colors duration-300 md:w-[50px]"
-              width={"100px"}
-              height={60}
+              className="w-[56px] md:w-[64px] hover:fill-lime-400 transition-colors duration-300"
               src={Logo}
               alt="logo"
             />
@@ -54,55 +52,83 @@ const Header = () => {
         </div>
 
         <nav
-          className={`${
-            openNavigation ? "flex fixed inset-0 background_col pt-20" : "hidden"
-          } lg:static lg:flex lg:bg-transparent lg:pt-0`}
+          className={`fixed inset-0 z-0 bg-gradient-to-b from-n-7 to-n-8 pt-24 flex flex-col lg:z-auto lg:static lg:flex lg:flex-row lg:bg-none lg:bg-transparent lg:pt-0 transition-opacity duration-300 ease-in-out ${
+            openNavigation
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none lg:opacity-100 lg:pointer-events-auto"
+          }`}
         >
-          <ul className="flex flex-col lg:flex-row justify-center mx-[40px] gap-6 lg:gap-0">
+          <ul className="flex flex-col lg:flex-row justify-center mx-[24px] lg:mx-[40px] gap-3 lg:gap-0">
             {navigation.map((item) => (
               <li
-                className="relative flex flex-col justify-center px-5 list-none"
+                className="relative flex flex-col justify-center px-5 lg:px-0 list-none"
                 key={item.id}
               >
-                <Link
-                  className={`px-[0.45rem] cursor-pointer text-white hover:text-lime-400 transition-colors  ${
-                    item.url  ? "text-blue-400 font-bold" : ""
-                  }`}
+                <NavLink
                   to={item.url}
                   onClick={closeNavigation}
+                  className={({ isActive }) =>
+                    `group relative inline-block rounded-lg border px-5 py-3 text-center text-lg transition-colors duration-300 lg:rounded-none lg:border-0 lg:px-[0.45rem] lg:py-0 lg:text-base ${
+                      isActive
+                        ? "border-lime-500/40 bg-n-7 text-lime-400 lg:bg-transparent"
+                        : "border-n-6 bg-n-7/60 text-white hover:text-lime-400 lg:border-0 lg:bg-transparent"
+                    }`
+                  }
                 >
-                  {item.title}
-                </Link>
+                  {({ isActive }) => (
+                    <>
+                      {item.title}
+                      <span
+                        className={`absolute -bottom-1 left-0 hidden h-[2px] bg-lime-400 transition-all duration-300 lg:block ${
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        }`}
+                      />
+                    </>
+                  )}
+                </NavLink>
               </li>
             ))}
           </ul>
+
+          {/* Social links, shown inside the mobile panel too */}
+          <div
+            className={`${
+              openNavigation ? "flex" : "hidden"
+            } mt-6 items-center justify-center gap-4 lg:hidden`}
+          >
+            {socialmedia.map((item, index) => (
+              <a
+                className="cursor-pointer px-[0.45rem] text-white"
+                onClick={closeNavigation}
+                key={index}
+                href={item.url}
+              >
+                <span className="inline-block text-[21px] transition-all duration-300 hover:scale-125 hover:text-lime-400">
+                  {item.logo}
+                </span>
+              </a>
+            ))}
+          </div>
         </nav>
 
-        {/* Social Media Links */}
-        <div
-          className={`${
-            openNavigation ? "flex flex-row mt-4 none" : ""
-          } lg:flex lg:mt-0 items-center gap-3 hidden `}
-        >
+        {/* Social Media Links (desktop) */}
+        <div className="hidden items-center gap-3 lg:flex">
           {socialmedia.map((item, index) => (
             <a
-              className={`px-[0.45rem] cursor-pointer text-white ${
-                item.url ? "text-lime-40" : ""
-              }`}
+              className="cursor-pointer px-[0.45rem] text-white"
               onClick={closeNavigation}
               key={index}
               href={item.url}
             >
-              {/* <img src={item.logo} alt={item.title} className="inline-block mr-1" /> */}
-              <span className="hover:text-lime-400 text-[21px] duration-300 transition-all ">{item.logo}</span>
+              <span className="inline-block text-[21px] transition-all duration-300 hover:scale-125 hover:text-lime-400">
+                {item.logo}
+              </span>
             </a>
           ))}
         </div>
 
         {/* Mobile Toggle Trigger */}
-        <div
-          className={`lg:hidden relative z-10 ${openNavigation ? "" : ""}`}
-        >
+        <div className="relative z-20 lg:hidden">
           <HamburgerMenu
             openNavigation={openNavigation}
             toggleNavigation={toggleNavigation}

@@ -1,5 +1,5 @@
 import logo from "../assets/logo.svg";
-import { Awwardsgame, Sqrapple, Brainwave, LinguaLoop } from "../assets";
+import { Awwardsgame, Sqrapple, Brainwave, LinguaLoop, SerenadeHMS } from "../assets";
 
 import {
   FacebookIcon,
@@ -119,12 +119,17 @@ export const images = [
   },
   {
     img: Brainwave,
-    text: "Brainwave Ai Power Prompt(FrontEnd)",
+    text: "Brainwave AI",
     category: "Completed",
   },
   {
     img: LinguaLoop,
     text: "LinguaLoop",
+    category: "Completed",
+  },
+  {
+    img: SerenadeHMS,
+    text: "Serenade HMS \u2014 Hotel & Resort Management System",
     category: "Completed",
   },
 ];
@@ -133,84 +138,100 @@ export const listOfSkills = [
   {
     id: 0,
     title: "HTML5",
-    img: Html
+    img: Html,
+    category: "Frontend",
   },
   {
     id: 1,
     title: "CSS3",
-    img: Css
+    img: Css,
+    category: "Frontend",
   },
   {
     id: 2,
     title: "Tailwind CSS",
     img: Tailwind,
+    category: "Frontend",
   },
   {
     id: 3,
     title: "JavaScript",
     img: Javascript,
+    category: "Frontend",
   },
   {
     id: 4,
     title: "React.js",
     img: Reactjs,
+    category: "Frontend",
   },
   {
     id: 5,
     title: "Next.js",
     img: Nextjs,
+    category: "Frontend",
   },
   {
     id: 6,
     title: "Express.js",
-    img: Express
+    img: Express,
+    category: "Backend",
   },
   {
     id: 7,
     title: "Python",
     img: Python,
+    category: "Backend",
   },
   {
     id: 8,
     title: "Numpy",
     img: Numpy,
+    category: "Data",
   },
   {
     id: 9,
     title: "Pandas",
     img: Pandas,
+    category: "Data",
   },
 
   {
     id: 10,
     title: "Flutter",
     img: Flutter,
+    category: "Mobile",
   },
   {
     id: 11,
     title: "C++",
     img: Cpp,
+    category: "Languages",
   },
   {
     id: 12,
     title: "C#",
     img: Csharp,
+    category: "Languages",
   },
   {
     id: 13,
     title: "Java",
     img: Java,
+    category: "Languages",
   },
 
   {
     id: 14,
     title: "GitHub",
     img: Github,
+    category: "Tools",
   },
   {
     id: 15,
     title: "Git",
     img: Git,
+    category: "Tools",
   },
  
 ];

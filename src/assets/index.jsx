@@ -3,6 +3,7 @@ import Sqrapple from "../assets/images/sqr-apple.png";
 import Brainwave from "../assets/images/Brainwave.png";
 import Logo from "../assets/LogoBlack.png";
 import LinguaLoop from "../assets/images/LinguaLoop.png";
+import SerenadeHMS from "../assets/images/serenade-hms.png";
 
 
 
@@ -21,7 +22,7 @@ import {
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 
-export { Logo, Awwardsgame, Sqrapple, Brainwave, LinguaLoop };
+export { Logo, Awwardsgame, Sqrapple, Brainwave, LinguaLoop, SerenadeHMS };
 
 export const FacebookIcon = <FontAwesomeIcon icon={faFacebookF} />;
 export const XIcon = <FontAwesomeIcon icon={faXTwitter} />;

@@ -6,6 +6,8 @@ import { ChevronRight, ChevronLeft, X, ChevronDown } from "lucide-react";
 import "../style/style.css";
 import InfiniteCarousel from "./Infinite";
 import { useImgChanger } from "../context/UseImgChanger";
+import ProjectCard from "./ProjectCard";
+import { motion } from "motion/react";
 
 const Home = () => {
  const {
@@ -23,17 +25,40 @@ const Home = () => {
       </section> */}
 
       <section className="relative pt-[100px] pb-[100px] section_2">
-        <div className="flex flex-wrap xl:mx-[4rem] lg:mx-[3.5rem] md:mx-[4rem] justify-center items-center mb-[100px]">
-          <div className="">
-            <img
-              className="p-5 min-w-[300px] xl:w-[400px] lg:w-[350px] md:[350px] rounded-[1.7rem]"
-              width={500}
-              height={350}
-              src={SQR}
-              alt={SQR}
-            />
-          </div>
-          <div className="mx-3">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 xl:mx-[4rem] lg:mx-[3.5rem] md:mx-[4rem] mb-[100px]">
+          <motion.div
+            className="relative flex md:justify-start justify-center "
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ type: "spring", stiffness: 80, damping: 14 }}
+          >
+            {/* Continuous gentle float */}
+            <motion.div
+              className="relative"
+              animate={{ y: [0, -14, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            >
+              {/* Slowly rotating gradient glow ring behind the image */}
+              <motion.div
+                className="absolute -inset-3 rounded-[2rem] opacity-60 blur-xl"
+                style={{
+                  background:
+                    "conic-gradient(from 0deg, #AC6AFF, #858DFF, #FF98E2, #FFC876, #AC6AFF)",
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+              />
+              <img
+                className="relative w-full max-w-[300px] md:max-w-[350px] lg:max-w-[350px] xl:max-w-[400px] rounded-[1.7rem] border border-n-6 bg-n-8"
+                width={500}
+                height={350}
+                src={SQR}
+                alt="Syed Qasim Rehman"
+              />
+            </motion.div>
+          </motion.div>
+          <div className="mx-3 max-w-[550px] text-center md:text-left">
             <h2 className="h2 text-transparent bg-clip-text bg-gradient-to-r from-gray-200">
               I&apos;m a FullStack Developer.
             </h2>
@@ -55,48 +80,40 @@ const Home = () => {
         </div>
         <img src={some} alt="" />
         <div className="flex flex-col ">
-          <div className=" grid grid-cols-1 md:grid-cols-2 p-[20px] overflow-hidden gap-5 ">
+          <div className="grid grid-cols-1 gap-6 p-[20px] md:grid-cols-2">
             {images.map((item, index) => (
-              <div  key={index} className="thumbnail-container">
-                <div className="relative">
-                <li className=" list-none">
-                  <img
-                    src={item.img}
-                    alt={index}
-                    onClick={() => openImage(index)}
-                    className="thumbnail grid xl:w-[800px] rounded-xl sm:grid-cols-1 sm:w-[600px] ms:w-[200px] relative "
-                  />
-                  <div className="absolute top-5 right-3 "><span className="bg-[#0003] pointer-events-none p-3 rounded-full">{item.category}</span></div>
-                  <div className="hover-data absolute bottom-4 left-5 opacity-0 transition-all transition-[.9s ease-in-out]">{item.text}</div>
-                </li>
-                </div>
-              </div>
+              <ProjectCard
+                key={index}
+                item={item}
+                index={index}
+                onOpen={openImage}
+              />
             ))}
             {currentIndex !== null && (
-              <div className="popup-overlay fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 ">
+              <div className="popup-overlay fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
                 <div className=" relative">
                   <div className=" relative">
                     <img
                       src={images[Imagechange]?.img}
                       alt={images[Imagechange]?.text}
-                      className="xl:w-[800px] rounded-xl :w-[150px] "
+                      className="w-[90vw] max-w-[800px] max-h-[80vh] object-contain rounded-xl"
                     />
 
                     <button
                       onClick={CloseImage}
-                      className="absolute top-2 right-2 rounded-full p-2"
+                      className="absolute top-2 right-2 rounded-full bg-black/50 p-2"
                     >
                       <X />
                     </button>
                     <button
                       onClick={privousImage}
-                      className="absolute top-[50%] left-3 px-4"
+                      className="absolute top-[50%] left-1 sm:left-3 px-2 sm:px-4 rounded-full bg-black/50"
                     >
                       <ChevronLeft />
                     </button>
                     <button
                       onClick={fowardImage}
-                      className="absolute top-[50%] right-3 px-4 "
+                      className="absolute top-[50%] right-1 sm:right-3 px-2 sm:px-4 rounded-full bg-black/50"
                     >
                       <ChevronRight />
                     </button>

@@ -23,10 +23,14 @@ export default function InfiniteCarousel({ direction = "left" }) {
         {triplicatedImages.map((item, index) => (
           <li
             key={`${item.id}-${index}`}
-            className="carousel-item-skill carousel-image-skill"
+            className="carousel-item-skill carousel-image-skill group relative"
           >
-            {item.img}
-            {/* <img src= alt={item.title} /> */}
+            <div className="transition-transform duration-300 ease-out group-hover:-translate-y-1 group-hover:scale-125">
+              {item.img}
+            </div>
+            <span className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md border border-n-6 bg-n-8 px-2 py-1 text-xs text-n-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+              {item.title}
+            </span>
           </li>
         ))}
       </div>
